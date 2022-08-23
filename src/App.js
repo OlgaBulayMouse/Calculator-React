@@ -9,14 +9,21 @@ function App() {
   const [counts, setCounts] = React.useState('0');
   const [result, setResult] = React.useState('');
 
-    const applyExpression = (countedNumber) => {
+  const applyExpression = (countedNumber) => {
     setCounts(countedNumber)
-    //setResult(eval(counts))
   };
 
   const finalResult = () => {
     setResult(eval(counts))
   };
+
+  React.useEffect(() => {
+    const unterance = new SpeechSynthesisUtterance(counts);
+    speechSynthesis.speak(unterance);
+  }, [counts]);
+
+ 
+ 
 
   return (
     <div className='App'>
@@ -36,8 +43,8 @@ function App() {
             <CountButton data={counts} expression={'-'} onClick={applyExpression} />
             <CountButton data={counts} expression={'*'} onClick={applyExpression} />
             <CountButton data={counts} expression={'/'} onClick={applyExpression} />
-          </Box>    
-          <ResultButton onClick={finalResult}/>   
+          </Box>
+          <ResultButton onClick={finalResult} />
         </Box>
       </Box>
     </div >

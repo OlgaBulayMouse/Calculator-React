@@ -6,7 +6,9 @@ function ResultButton(props) {
 
   return (
     <Button 
-      onClick={() => {props.onClick(props.data)}}
+      onClick={() => {
+        props.onClick(props.data);
+      }}
       width={'60px'}
       height={'60px'}
       margin={'5px'}
